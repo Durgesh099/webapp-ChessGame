@@ -2,8 +2,10 @@ import { useState, useMemo, useCallback} from "react";
 import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
 import Modal from "./Modal";
+import Button from "@mui/material/Button";
+import './Game.css'
 
-function Game({ players, room, orientation, cleanup }) {
+const Game =(props)=> {
   const chess = useMemo(() => new Chess(), []); // <- 1
   const [fen, setFen] = useState(chess.fen()); // <- 2
   const [over, setOver] = useState("");
@@ -57,6 +59,15 @@ function Game({ players, room, orientation, cleanup }) {
       return true;
   } // <- 3
 
+  const resetHandler=()=>{
+    chess.reset()
+    setFen(chess.fen())
+  }
+  const btn = {
+    "border": "1px solid blue",
+    "height": "30px",
+    "margin-left": "10px",
+  }
   
   // Game component returned jsx
   return (
@@ -76,6 +87,8 @@ function Game({ players, room, orientation, cleanup }) {
           setFen(chess.fen())
         }}
       />
+      {chess.isGameOver() && 
+        <Button  style={btn} onClick={resetHandler}>Reset</Button>}
     </>
   );
 }

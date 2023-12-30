@@ -1,0 +1,11 @@
+.board{
+    width: 50%;
+    margin: 10px 10px;
+}
+
+@media (max-width:650px){
+    div.board{
+        width: 95%;
+        margin: 10px 10px;
+    }
+}

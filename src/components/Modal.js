@@ -5,21 +5,23 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function CustomDialog({ open, children, title, contentText, handleContinue }) {
+const Modal = (props)=> {
   return (
-    <Dialog open={open}>
-      <DialogTitle>{title}</DialogTitle>
+    <Dialog open={props.open}>
+      <DialogTitle>{props.title}</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          {contentText}
+          {props.contentText}
         </DialogContentText>
-        {children}
+        {props.children}
       </DialogContent>
       <DialogActions>
         {/* Force users to make input without option to cancel */}
         {/* <Button onClick={handleClose}>Cancel</Button> */}
-        <Button onClick={handleContinue}>Continue</Button>
+        <Button onClick={props.handleContinue}>Continue</Button>
       </DialogActions>
     </Dialog>
   );
 }
+
+export default Modal
