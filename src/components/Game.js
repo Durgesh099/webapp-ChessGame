@@ -2,7 +2,6 @@ import { useState, useMemo, useCallback} from "react";
 import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
 import Modal from "./Modal";
-import Button from "@mui/material/Button";
 import './Game.css'
 
 const Game =(props)=> {
@@ -63,16 +62,11 @@ const Game =(props)=> {
     chess.reset()
     setFen(chess.fen())
   }
-  const btn = {
-    "border": "1px solid blue",
-    "height": "30px",
-    "margin-left": "10px",
-  }
   
   // Game component returned jsx
   return (
     <>
-      <div className="board">
+      <div class="sm:w-[50%] sm:max-w-[600px] sm:mx-2 sm:my-2 mx-2 my-2" >
         <Chessboard
           position={fen}
           onPieceDrop={onDrop}
@@ -88,7 +82,8 @@ const Game =(props)=> {
         }}
       />
       {chess.isGameOver() && 
-        <Button  style={btn} onClick={resetHandler}>Reset</Button>}
+        <button class="border border-blue-500 h-8 ml-2 w-20 rounded-lg text-blue-700 hover:bg-blue-400 hover:text-white"
+        onClick={resetHandler}>Reset</button>}
     </>
   );
 }

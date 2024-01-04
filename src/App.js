@@ -1,14 +1,12 @@
 import { Container } from "@mui/material";
 import Game from "./components/Game";
 
-export default function App() {
-  const ContainerStyle = {
-    "margin-left":"0px",
-    "padding": "0px"
-  }
+const App=()=> {
   return (
-    <Container style={ContainerStyle}>
+    <Container class="ml-0 p-0">
       <Game />
     </Container>
   );
 }
+
+export default App;
